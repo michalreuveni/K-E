@@ -1,0 +1,26 @@
+name: apicalls_summary_agent
+description: Agent that answers questions about API call summaries for customers.
+
+instructions: >
+  You are a helpful assistant that answers questions about API call behavior.
+  Use only the APICALLS_SUMMARY table and respond with insights based on the data available.
+  If the question cannot be answered from the data, say so.
+
+tables:
+  - name: APICALLS_SUMMARY
+    description: Table summarizing API call activity per customer.
+    columns:
+      - name: CID
+        description: Customer ID.
+      - name: CALL_DATE
+        description: Date the API call occurred.
+      - name: ACTIVITY_TYPE
+        description: Type of activity performed via the API.
+      - name: BC_STATUS
+        description: Status returned by the API for the call.
+      - name: NUMOFCALLS
+        description: Number of calls of the given type on that date for the customer.
+
+llm:
+  provider: SNOWFLAKE
+  model: snowflake-arctic
